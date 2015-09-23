@@ -1,0 +1,30 @@
+<div class="gray_background">
+  <div class="wrapper clearfix">
+    <div class="donation_page">
+    <h3>List of Donations</h3>
+    <div id="backing">
+        <%= render "preorder/homepage/progress_bar" %>
+    </div>
+    <table>
+        <thead>
+            <tr class="title">
+              <th>Number</th><th>Date</th><th>Name</th><th>Email</th><th>Amount</th><th>Address</th><th>T-Shirt</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% Order.completed_with_email.each do |order| %>
+        	<tr>
+        	  <td><%= order.number %></td>
+              <td><%= order.created_at.strftime("%I:%M%p %B %-d, %Y") %></td>
+              <td><%= order.name %></td>
+              <td><%= order.email %></td>
+              <td>$<%= order.price.round(2) %></td>
+              <td><% if order.address_one.to_s.strip.length != 0 %><%= order.address_one %><% if order.address_two.to_s.strip.length != 0 %><%= " " + order.address_two %><% end %><%= ", " + order.city + ", " + order.state + " " + order.zip %><% end %></td>
+              <td><% if order.country.to_s.strip.length != 0 %><%= order.country %><% end %></td>
+        	</tr>
+        <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

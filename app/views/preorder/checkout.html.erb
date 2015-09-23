@@ -1,0 +1,75 @@
+<% if Settings.payment_processor == "stripe" %>
+  <script>
+    STRIPE_PUBLIC_KEY = "<%= ENV['STRIPE_PUBLIC_KEY'] || Settings.stripe_public_key %>"
+  </script>
+  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
+  <%= javascript_include_tag "https://checkout.stripe.com/checkout.js" %>
+  <%= javascript_include_tag "checkout.js" %>
+<% end %>
+
+<div class="gray_background">
+  <div class="wrapper clearfix">
+    <div class="main_content <%= "payment_options" if Settings.use_payment_options %>">
+      <h3>Check out</h3>
+      <p>
+        <% if Settings.payment_processor == "stripe" %>
+         All of your payment information will be secured with Stripe.
+        <% else %>
+         All of your payment information will be secured and stored with Amazon Payments. If you don't have an Amazon account, simply select "I'm a new Customer" on the next page.
+        <% end %>
+
+        <br />
+        <br />
+
+        <% if Settings.use_payment_options %>
+          Select a payment option and enter your email address below.
+        <% else %>
+          Please enter your details below.
+        <% end %>
+
+      </p>
+      <%= form_tag "/preorder/prefill", :id => "checkout" do %>
+        <%= render 'preorder/payment_options' %>
+        <div class="checkout_controls">
+          <div class="checkout_controls_wrapper">
+            <div class="checkout_controls_inner">
+              <%= text_field_tag "name", nil, :placeholder => "Full name", :required => "required", :id => "name" %>
+              <%= text_field_tag "amount", nil, :placeholder => "Amount", :required => "required", :id => "amount" %>
+              <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
+              <% if Settings.payment_processor == "stripe" %>
+                <details>
+                  <summary><span>Mailing address (Tier 2+)</span></summary>
+                  <div>
+                    <%= text_field_tag "addressLine1", nil, :placeholder => "Address", :id => "addressLine1" %>
+                    <%= text_field_tag "addressLine2", nil, :placeholder => "Address (optional)", :id => "addressLine2" %>
+                    <%= text_field_tag "city", nil, :placeholder => "City", :id => "city" %>
+                    <%= select_tag "state", options_for_select(us_states, ['Washington', 'WA']), :id => "state" %>
+                    <%= number_field_tag "zip", nil, :placeholder => "Zip", :id => "zip" %>
+                  <details>
+                    <summary><span>T-Shirt size (Tier 3+)</span></summary>
+                    <div>
+                      <%= text_field_tag "tshirt", nil, :placeholder => "T-Shirt size and special requests", :id => "tshirt" %>
+                    </div>
+                  </details>
+                  </div>
+                </details>
+                <%= hidden_field_tag :stripe_token %>
+              <% else %>
+                <%= hidden_field_tag "preorder", true %>
+                <%= hidden_field_tag "quantity", params[:quantity] %>
+              <% end %>
+              <%= submit_tag "Donate", :class => "blue_button", :id => "checkout_button" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <br />
+      <div id="payment_errors">
+        Please enter a valid donation amount, like $10.
+      </div>
+      <br />
+        <p style="font-style: italic;font-size: .75em;">SAE International is a registered charitable 501(c)(3) organization.</p>
+    </div>
+    <%= render 'preorder/checkout/sidebar' %>
+  </div>
+</div>
