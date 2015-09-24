@@ -1,4 +1,4 @@
-## Selfstarter ##
+## Selfstarter
 The main things that are modified here in this code as opposed to the original selfstarter code are following.
 
 Color changes in stylesheets, image changes, text changes in app/views.
@@ -10,7 +10,7 @@ Changes to javascript: disabled disabling of button before filling out email bec
 Added support for stripe payments in addition to amazon payments. This
 is configurable via selfstarter/config/settings.yml.
 
-## Getting Started
+### Getting Started
 
 *Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
 
@@ -40,7 +40,7 @@ Let's get it running:
 rails s
 ```
 
-### Customizing
+#### Customizing
 
 While it is *just* a skeleton, we did make it a little quicker to change around things like your product name, the colors, pricing, etc.
 
@@ -68,7 +68,7 @@ To dive into the code, open this file:
 app/controllers/preorder_controller.rb
 ```
 
-### Deploying to Production
+#### Deploying to Production
 
 We recommend using Heroku, and we even include a ```Procfile``` for you. All you need to do is first install the [Heroku Toolbelt](https://toolbelt.heroku.com) and then run:
 
