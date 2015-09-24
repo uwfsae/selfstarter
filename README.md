@@ -10,17 +10,77 @@ Changes to javascript: disabled disabling of button before filling out email bec
 Added support for stripe payments in addition to amazon payments. This
 is configurable via selfstarter/config/settings.yml.
 
-### Changing settings ###
+## Getting Started
 
-Most settings are modifiable in config/settings.yml.
+*Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
 
-To change text on the homepage, modify the HTML files in
+First you'll need to fork and clone this repo
+
+```bash
+git clone https://github.com/lockitron/selfstarter.git
+```
+
+Let's get all our dependencies setup:
+```bash
+bundle install --without production
+```
+
+Now let's create the database:
+```bash
+rake db:migrate
+```
+
+If you're using the payment options component (use_payment_options = true in settings.yml) then need to seed some data for the options:
+```bash
+rake db:seed
+```
+
+Let's get it running:
+```bash
+rails s
+```
+
+### Customizing
+
+While it is *just* a skeleton, we did make it a little quicker to change around things like your product name, the colors, pricing, etc.
+
+To change around the product name, tweet text, and more, open this file:
+
+```
+config/settings.yml
+```
+
+To change around the colors and fonts, open this file:
+
+```
+app/assets/stylesheets/variables.css.scss
+```
+
+To change text on the homepage, open this file:
+
+```
 app/views/preorder/homepage
+```
 
-### Running Selfstarter on Heroku ###
+To dive into the code, open this file:
 
-Heroku is the preferred way to host the website. Set up a heroku app, then install the heroku toolbelt on your computer. After pushing the repository to heroku (using the selfstarter folder as the root of the git project), run ``` heroku run
-rake db:migrate ``` and ``` heroku run rake db:seed ``` to set up the sql database. After this the app should be running unless something has gone wrong.
+```
+app/controllers/preorder_controller.rb
+```
+
+### Deploying to Production
+
+We recommend using Heroku, and we even include a ```Procfile``` for you. All you need to do is first install the [Heroku Toolbelt](https://toolbelt.heroku.com) and then run:
+
+```bash
+heroku create
+git push heroku master
+heroku run rake db:migrate
+heroku run rake db:seed
+heroku open
+```
+
+UWFSAE currently uses a heroku app called uwformulaselfstarter.
 
 Author: Jeff Pyke
 
