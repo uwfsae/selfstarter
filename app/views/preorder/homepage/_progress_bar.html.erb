@@ -10,8 +10,8 @@
 
   <% if Settings.expiration_date.present? and Settings.expiration_date > DateTime.now %>
     <li class="stats" id="days">
-      <%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\D/, "") %>
-      <span><%= distance_of_time_in_words_to_now(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</span>
+      <%= time_ago_in_words_days_max(Settings.expiration_date).gsub(/\D/, "") %>
+      <span><%= time_ago_in_words_days_max(Settings.expiration_date).gsub(/\d/, "").gsub("about", "") %> left</span>
     </li>
   <% else %>
     <li class="stats" id="days">

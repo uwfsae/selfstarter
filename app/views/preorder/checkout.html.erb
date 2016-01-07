@@ -34,23 +34,18 @@
           <div class="checkout_controls_wrapper">
             <div class="checkout_controls_inner">
               <%= text_field_tag "name", nil, :placeholder => "Full name", :required => "required", :id => "name" %>
-              <%= text_field_tag "amount", nil, :placeholder => "Amount", :required => "required", :id => "amount" %>
+              <%= text_field_tag "amount", nil, :placeholder => "Donation Amount", :required => "required", :id => "amount" %>
               <%= email_field_tag "email", nil, :placeholder => "Email address", :required => "required", :id => "email" %>
               <% if Settings.payment_processor == "stripe" %>
                 <details>
-                  <summary><span>Mailing address (Tier 2+)</span></summary>
+                  <summary><span>Mailing address &amp; T-Shirt size (Tier 2+)</span></summary>
                   <div>
-                    <%= text_field_tag "addressLine1", nil, :placeholder => "Address", :id => "addressLine1" %>
-                    <%= text_field_tag "addressLine2", nil, :placeholder => "Address (optional)", :id => "addressLine2" %>
+                    <%= text_field_tag "addressLine1", nil, :placeholder => "Address Line 1", :id => "addressLine1" %>
+                    <%= text_field_tag "addressLine2", nil, :placeholder => "Address Line 2 (optional)", :id => "addressLine2" %>
                     <%= text_field_tag "city", nil, :placeholder => "City", :id => "city" %>
                     <%= select_tag "state", options_for_select(us_states, ['Washington', 'WA']), :id => "state" %>
                     <%= number_field_tag "zip", nil, :placeholder => "Zip", :id => "zip" %>
-                  <details>
-                    <summary><span>T-Shirt size (Tier 3+)</span></summary>
-                    <div>
-                      <%= text_field_tag "tshirt", nil, :placeholder => "T-Shirt size and special requests", :id => "tshirt" %>
-                    </div>
-                  </details>
+                    <%= text_field_tag "tshirt", nil, :placeholder => "T-Shirt size and special requests", :id => "tshirt" %>
                   </div>
                 </details>
                 <%= hidden_field_tag :stripe_token %>

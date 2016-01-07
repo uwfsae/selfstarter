@@ -12,7 +12,7 @@ project_goal: 15000
 # If you want to edit the FAQ, head over to app/views/preorder/homepage/_faqs.html.erb
 
 # This'll be both the page title (<title></title>) and the name in the header
-product_name: "UW Formula Motorsports"
+product_name: "UWashington Formula Motorsports"
 
 # This will be used in sentences like Hooray You've just reserved product_description
 product_description: "a stake in Formula SAE"
@@ -26,7 +26,7 @@ value_proposition: "Help us get rolling!"
 
 # YouTube or Vimeo Video URL (The embed URL, without the query string options)
 # Replace /embed/ in your video url path with /v/ for video playback to work.
-video_embed_url: "http://www.youtube.com/embed/V4MbGYF7iHw"
+video_embed_url: "http://www.youtube.com/embed/1ZrvBEIa_8Y"
 
 # If set to true, then the image at "/assets/video_placeholder.png" will be shown in place of the youtube
 # video.  When the user clicks it, the vid will replace the image and start playing.
@@ -82,7 +82,7 @@ primary_stat_verb: 'supporter'
 middle_reserve_text: "Donate now"
 
 # When the project should end
-expiration_date: <%= DateTime.new(2015,4,10) %>
+expiration_date: <%= DateTime.new(2016,2,14) %>
 
 # Text to show inside the progress bar, when the goal reaches/exceeds 100%
 progress_text: "Implemented"
@@ -90,15 +90,15 @@ progress_text: "Implemented"
 # Call to action section
 
 # On Lockitron, it's "First Batch Ships in March 2013"
-ships: "New donations go to next year's team"
+ships: ""
 
 # On Lockitron, it's "Reserve Now"
 call_to_action: "Donate now"
 # On Lockitron, this is "Only $149 for a limited time"
-price_human: "Testing in progress!"
+price_human: "Manufacturing in progress!"
 
 # The paragraph below the price. You'd probably say something about how you're not going to charge them before it ships (so it's less risky).
-dont_give_them_a_reason_to_say_no: "All donations are tax-deductible."
+dont_give_them_a_reason_to_say_no: ""
 
 # Social Stuff
 # Can be overriden with the FACEBOOK_APP_ID environment variable
