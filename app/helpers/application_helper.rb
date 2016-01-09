@@ -1,9 +1,14 @@
 module ApplicationHelper
+  # Mirror of time_ago_in_words except for durations longer than 30 days which
+  # will remain formatting in number of days instead of months or years.
+  # For example, "63 days ago" instead of "2 months ago"
   def time_ago_in_words_days_max(from_time, options = {})
     distance_of_time_in_words_days_max(from_time, Time.now, options)
   end
 
-  # copied from distance_of_time_in_words with month/year support removed
+  # Mirror of distance_of_time_in_words except for durations longer than 30
+  # days which will remain formatting in number of days instead of months or
+  # years.
   def distance_of_time_in_words_days_max(from_time, to_time = 0, options = {})
     options = {
       scope: :'datetime.distance_in_words'
