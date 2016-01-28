@@ -98,7 +98,7 @@ call_to_action: "Donate now"
 price_human: "Manufacturing in progress!"
 
 # The paragraph below the price. You'd probably say something about how you're not going to charge them before it ships (so it's less risky).
-dont_give_them_a_reason_to_say_no: ""
+dont_give_them_a_reason_to_say_no: "All donations are tax-deductible."
 
 # Social Stuff
 # Can be overriden with the FACEBOOK_APP_ID environment variable
