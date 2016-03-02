@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 ruby '2.2.4'
 
 gem 'rails', '4.0.0'
-gem 'json', '~> 1.7.7'
+gem 'json', '~> 1.8.3'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.11'
   gem 'pry-rails'
 end
 
